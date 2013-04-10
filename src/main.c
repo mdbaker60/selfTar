@@ -9,12 +9,11 @@ int main (int argc, char *argv[]){
 	//
 	//copy contents of each input item
 
+
 	if (argc < 2){
 		printHelp();
 	}
-	
-	else if (*(argv+1) == "-"){
-		printf("%c", **(argv + 1) );	
+	else if (**(argv+1) == '-'){
 		parseFlg(argc, argv);
 	}	
 	
