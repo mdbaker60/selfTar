@@ -25,6 +25,8 @@ void parseFlg(int argc, char** argv){
 				ver();	
 				printf("\n\n");
 				break;
+			default:
+				printf("invalid option\n");
 
 
 		
