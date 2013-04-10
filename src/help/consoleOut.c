@@ -13,10 +13,8 @@ void printHelp(){
 //Read flags and dispatch proper help message
 void parseFlg(int argc, char** argv){
 	int i = 1;
+	char flag = *(*(argv + i)+1);
 	for (;i < argc; i++){
-		//printf("FLAG: %c\n", ( *(*(argv + i)+1) ) );
-		
-		char flag = *(*(argv + i)+1);
 		switch(flag){
 			case('h'):
 				printf("HELP FLAG");	
