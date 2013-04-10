@@ -23,8 +23,7 @@ void parseFlg(int argc, char** argv){
 
 			case('v'):
 				ver();	
-				printf("\n");
-				printf("\n");
+				printf("\n\n");
 				break;
 
 
