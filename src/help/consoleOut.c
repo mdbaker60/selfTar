@@ -1,14 +1,34 @@
 //Console help library
-//Add help stuff here
+//Add help print stuff here
 #include "help.h"
-
-//Generic help message
+char *ver_ = "0.1";
+//Generic help message print.
 void printHelp(){
-	printf("You seem lost, friend.\n");
+	printf("ARCHIVER - ");
+	ver();
+	printf("%c", '\n');
 }
 
 
 //Read flags and dispatch proper help message
-void parseFlg(char* argv[]){
-	printf("Reading Flags!");
+void parseFlg(int argc, char** argv){
+	printf("Reading Flags");	
+	int i = 1;
+	for (i; i <=argc; i++){
+		printf("%s", (*(argv + argc)));
+		switch(argc){
+			case(1):
+				
+			
+			break;
+
+
+		}
+	}
+}
+
+
+void ver(){
+	printf("%s", ver_);
+	//Version String
 }
