@@ -4,7 +4,6 @@
 
 int main (int argc, char *argv[]){
 	printf("Hello World!\n");
-	return 0;
 	//TODO
 	//read input
 	//generate destination
@@ -14,5 +13,6 @@ int main (int argc, char *argv[]){
 	if (argc < 2){
 		printf("Need more args.");
 	}
-
+	
+	return 0;
 }
