@@ -8,13 +8,14 @@ int main (int argc, char *argv[]){
 	//generate destination
 	//
 	//copy contents of each input item
-	//printf("%i", argc);	
-	if (argc <= 2){
+
+	if (argc < 2){
 		printHelp();
 	}
 	
 	else if (*(argv+1) == "-"){
-		parseFlg(argv);
+		printf("%c", **(argv + 1) );	
+		parseFlg(argc, argv);
 	}	
 	
 	
