@@ -8,7 +8,7 @@
 	//consoleOut	Holds functions for console output
 
 
-#include "../main.h"
+#include "../base/main.h"
 
 
 #endif
