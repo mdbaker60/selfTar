@@ -10,10 +10,6 @@
 #include <stdlib.h>
 typedef struct
 {
-	//TODO For now just a node in a linked 
-	//list of file names. Expand to hold file
-	//details
-	
 	int* filenum;
 	char* path;
 }file;
