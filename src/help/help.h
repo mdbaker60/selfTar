@@ -9,6 +9,8 @@
 
 
 #include "../base/main.h"
+#include <stdio.h>
 
+void helpMain();
 
 #endif
