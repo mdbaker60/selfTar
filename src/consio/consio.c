@@ -14,13 +14,14 @@ typedef struct
 	//list of file names. Expand to hold file
 	//details
 	
-	int filenum;
+	int* filenum;
 	char* path;
 }file;
 
 //TODO: Move to help.c
 char *ver_ = "0.1";
 int mode = 0;
+int __DEBUG = 1;
 void ver(){
 	printf("Version %s", ver_);
 	//Version String
@@ -53,66 +54,83 @@ void parseFlag(char* argv){
 }
 
 file * getInputs(char* arg[]){
-	//get list of input paths
-	printf("IN INPUTS\n");
 	int pathLen = 0, i,n;	
 	char* path = arg[0]; 
 	char * buffer;
 	file** ret;
 	file *nf = (file *) malloc(sizeof (file));
+
 	//Read in a file path
 	while(*(path + pathLen) != '\0'){
 		pathLen++;
 	}
 	
 	buffer = (char *)malloc(pathLen + 1);
-	
+	//USE STR COPY FOR THIS	
 	for (n = 0; n <pathLen; n++){
 		*(buffer+n) = *(path+n);
 	}
 
 	nf->path = buffer;
-	nf->filenum = i;					
-
+	nf->filenum = malloc (sizeof (int));					
+	*(nf->filenum) = 2;
 
 	return nf;
 
+}
+
+void DEBUG_printout(int count, file *paths[]){
+	//TODO Test struct allocation
+	int i;
+	if (__DEBUG == 1){
+		for (i = 0; i < count - 1; i++){
+			printf("%i\n", *(paths[i]->filenum));
+			printf("%s\n", paths[i]->path);
+	
+
+		}	
+	}
 }
 
 void parseArgs(int args, char* arg[]){
 	//TODO 	ASSUMING AT LEAST ONE PATH GIVEN AT THIS POINT
 	//	CHECK
 	char *argi;
-	file **inputs;
-	
-
+	file **inputs = 0x0;
 
 	int i;
-	if (args == 1) printHelp();
+	if (args == 1) {
+		printHelp();
+		__DEBUG = 0;
+	}
 	for (i = 1; i< args; i++){
 		argi = *(arg + i);
 		if (*argi == '-'){
 			parseFlag(argi);
+			__DEBUG = 0;
+			continue;
 		}
 
 		switch(mode){
 			case(0):
 				mode = 1;
 			case(1):
-				printf("READING PATH SIZEOF:%i\n", sizeof(file *));
-				inputs = (file**) realloc(inputs, sizeof(file *));
+				inputs = (file**) realloc(inputs, sizeof(file *));//sizeof(file *));
 				if (inputs == 0x0){
 					printf("MALLOC FAIL\n");
 
 				}
+
 				inputs[i - 1] = getInputs(arg + i);								
 				break;
 
 			default:
+
 				break;
 		}
 
 	}
+	DEBUG_printout(i, inputs);
 }
 
 
