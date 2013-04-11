@@ -2,7 +2,18 @@
 //Add help print stuff here
 #include "consio.h"
 char *ver_ = "0.1";
+void ver(){
+	printf("Version %s", ver_);
+	//Version String
+}
 
+
+//Generic help message print.
+void printHelp(){
+	printf("ARCHIVER - ");
+	ver();
+	printf("%c", '\n');
+}
 
 //Read flags and dispatch proper help message
 void parseArgs(int argc, char** argv){
@@ -28,16 +39,7 @@ void parseArgs(int argc, char** argv){
 	}
 }
 
-//Generic help message print.
-void printHelp(){
-	printf("ARCHIVER - ");
-	ver();
-	printf("%c", '\n');
-}
 
 
 
-void ver(){
-	printf("Version %s", ver_);
-	//Version String
-}
+
