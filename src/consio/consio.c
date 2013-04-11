@@ -1,17 +1,11 @@
-//Console help library
+//Console dispatch
 //Add help print stuff here
-#include "help.h"
+#include "consio.h"
 char *ver_ = "0.1";
-//Generic help message print.
-void printHelp(){
-	printf("ARCHIVER - ");
-	ver();
-	printf("%c", '\n');
-}
 
 
 //Read flags and dispatch proper help message
-void parseFlg(int argc, char** argv){
+void parseArgs(int argc, char** argv){
 	int i = 1;
 	char flag; 
 	for (;i < argc; i++){
@@ -33,6 +27,14 @@ void parseFlg(int argc, char** argv){
 		}
 	}
 }
+
+//Generic help message print.
+void printHelp(){
+	printf("ARCHIVER - ");
+	ver();
+	printf("%c", '\n');
+}
+
 
 
 void ver(){

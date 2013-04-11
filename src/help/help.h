@@ -9,11 +9,6 @@
 
 
 #include "../main.h"
-	
 
-//ConsoleOut.c
-	void printHelp();
-	void parseFlg(int, char**);
-	void ver();
 
 #endif

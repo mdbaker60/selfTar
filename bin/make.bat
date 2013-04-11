@@ -2,3 +2,4 @@
 cd ..
 make.bat
 cd bin
+
