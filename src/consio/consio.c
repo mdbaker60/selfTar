@@ -48,9 +48,9 @@ void parseFlag(char* argv){
 	}
 }
 
-file * getInputs(char* arg[]){
+file * getInputs(char arg[]){
 	int pathLen = 0, i,n;	
-	char* path = arg[0]; 
+	char* path = arg; 
 	char * buffer;
 	file** ret;
 	file *nf = (file *) malloc(sizeof (file));
@@ -116,7 +116,7 @@ void parseArgs(int args, char* arg[]){
 
 				}
 
-				inputs[i - 1] = getInputs(arg + i);								
+				inputs[i - 1] = getInputs(argi);							
 				break;
 
 			default:
