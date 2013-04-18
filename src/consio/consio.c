@@ -20,7 +20,6 @@ int mode = 0;
 int __DEBUG = 1;
 void ver(){
 	printf("Version %s", ver_);
-	//Version String
 }
 
 //TODO: Move to help.c
@@ -60,13 +59,13 @@ file * getInputs(char* arg[]){
 	while(*(path + pathLen) != '\0'){
 		pathLen++;
 	}
-	
+	printf("PATHLEN: %i\n", pathLen);	
 	buffer = (char *)malloc(pathLen + 1);
+	buffer[pathLen] = '\0';
 	//USE STR COPY FOR THIS	
 	for (n = 0; n <pathLen; n++){
 		*(buffer+n) = *(path+n);
 	}
-
 	nf->path = buffer;
 	nf->filenum = malloc (sizeof (int));					
 	*(nf->filenum) = 2;
