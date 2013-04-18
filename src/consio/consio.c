@@ -10,6 +10,10 @@
 #include <stdlib.h>
 typedef struct
 {
+	//TODO
+	//This should hold everything about an input file
+	//Will need to expand this and move it to a more
+	//sensible place 
 	int* filenum;
 	char* path;
 }file;
@@ -59,7 +63,6 @@ file * getInputs(char arg[]){
 	while(*(path + pathLen) != '\0'){
 		pathLen++;
 	}
-	printf("PATHLEN: %i\n", pathLen);	
 	buffer = (char *)malloc(pathLen + 1);
 	buffer[pathLen] = '\0';
 	//USE STR COPY FOR THIS	
@@ -68,7 +71,7 @@ file * getInputs(char arg[]){
 	}
 	nf->path = buffer;
 	nf->filenum = malloc (sizeof (int));					
-	*(nf->filenum) = 2;
+	*(nf->filenum) = pathLen;
 
 	return nf;
 
@@ -77,14 +80,16 @@ file * getInputs(char arg[]){
 void DEBUG_printout(int count, file *paths[]){
 	//TODO Test struct allocation
 	int i;
+	printf("\nDebug Output:\n-------------");
 	if (__DEBUG == 1){
 		for (i = 0; i < count - 1; i++){
-			printf("%i\n", *(paths[i]->filenum));
-			printf("%s\n", paths[i]->path);
+			printf("\nPath Length: %i\n", *(paths[i]->filenum));
+			printf("Path: %s\n", paths[i]->path);
 	
 
 		}	
 	}
+	printf("-------------\n\n");
 }
 
 void parseArgs(int args, char* arg[]){
