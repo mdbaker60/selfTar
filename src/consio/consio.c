@@ -16,7 +16,7 @@ typedef struct
 	//sensible place 
 	int* filenum;
 	char* path;
-}file;
+}fileNode;
 
 //TODO: Move to help.c
 char *ver_ = "0.1";
@@ -52,12 +52,12 @@ void parseFlag(char* argv){
 	}
 }
 
-file * getInputs(char arg[]){
+fileNode * getInputs(char arg[]){
 	int pathLen = 0, i,n;	
 	char* path = arg; 
 	char * buffer;
-	file** ret;
-	file *nf = (file *) malloc(sizeof (file));
+	fileNode** ret;
+	fileNode *nf = (fileNode *) malloc(sizeof (fileNode));
 
 	//Read in a file path
 	while(*(path + pathLen) != '\0'){
@@ -77,7 +77,7 @@ file * getInputs(char arg[]){
 
 }
 
-void DEBUG_printout(int count, file *paths[]){
+void DEBUG_printout(int count, fileNode *paths[]){
 	//TODO Test struct allocation
 	int i;
 	printf("\nDebug Output:\n-------------");
@@ -96,7 +96,7 @@ void parseArgs(int args, char* arg[]){
 	//TODO 	ASSUMING AT LEAST ONE PATH GIVEN AT THIS POINT
 	//	CHECK
 	char *argi;
-	file **inputs = 0x0;
+	fileNode **inputs = 0x0;
 
 	int i;
 	if (args == 1) {
@@ -115,7 +115,7 @@ void parseArgs(int args, char* arg[]){
 			case(0):
 				mode = 1;
 			case(1):
-				inputs = (file**) realloc(inputs, sizeof(file *));//sizeof(file *));
+				inputs = (fileNode**) realloc(inputs, sizeof(fileNode *));//sizeof(file *));
 				if (inputs == 0x0){
 					printf("MALLOC FAIL\n");
 
@@ -130,7 +130,9 @@ void parseArgs(int args, char* arg[]){
 		}
 
 	}
-	DEBUG_printout(i, inputs);
+	//DEBUG_printout(i, inputs);
+	//At this point, file paths have been scanned pass to archiver
+	dispatch(inputs);
 }
 
 
